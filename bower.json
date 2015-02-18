@@ -28,8 +28,8 @@
         "!README.md",
         "!dist/css",
         "!dist/fonts",
-        "!less",
-        "!scss"
+        "!less/**/**.*",
+        "!scss/**/**.*"
     ],
     "dependencies": {}
 }
