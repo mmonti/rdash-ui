@@ -6,10 +6,10 @@ $fontPath: '../fonts' !default;
  /* #30426a BLUE (default)*/
 
 /* Sidebar background color */
- $sidebarBaseColor: #30426a;
+ $sidebarBaseColor: #30426a !default;
  /* Sidebar header and footer color */
- $sidebarHeaderColor: darken($sidebarBaseColor, 2%);
+ $sidebarHeaderColor: darken($sidebarBaseColor, 2%) !default;
  /* Sidebar title text colour */
- $sidebarTitleColor:  lighten($sidebarBaseColor, 30%);
+ $sidebarTitleColor:  lighten($sidebarBaseColor, 30%) !default;
 /* Sidebar menu item hover color */
- $sidebarMenuItemHover: #e99d1a;
+ $sidebarMenuItemHover: #e99d1a !default;
