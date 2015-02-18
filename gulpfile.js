@@ -13,7 +13,10 @@ var gulp = require('gulp'),
 var paths  = {
     fonts: 'fonts/**.*',
     images: 'img/**/*.*',
-    styles: cssCompiler + '/**/*.' + cssCompiler
+    styles: [
+        cssCompiler + '/**/*.' + cssCompiler,
+        '!' + cssCompiler + '/rdash/**/*.' + cssCompiler // No need to compile files inside rdash/
+    ]
 };
 
 /**
