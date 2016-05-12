@@ -30,6 +30,11 @@ or include as a project dependancy in your `bower.json`:
 },
 ```
 
+#### LESS vs SCSS
+rdash-ui comes with LESS and SCSS versions of its stylesheet. By default, running gulp will compile using LESS. This can be changed by editing the first line in `gulpfile.js`:
+
+`var cssCompiler = 'less'; // 'less' or 'scss'`
+
 ## Wiki
 For full documentation on the dashboard, visit the [Wiki]().
 
