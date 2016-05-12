@@ -1,16 +1,22 @@
+var cssCompiler = 'less'; // 'less' or 'scss'
+
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
     less = require('gulp-less'),
+    sass = require('gulp-sass'),
     minifycss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
-    rimraf = require('gulp-rimraf')
-watch = require('gulp-watch');
+    rimraf = require('gulp-rimraf'),
+    watch = require('gulp-watch');
 
 var paths  = {
     fonts: 'fonts/**.*',
     images: 'img/**/*.*',
-    styles: 'less/**/*.less',
+    styles: [
+        cssCompiler + '/**/*.' + cssCompiler,
+        '!' + cssCompiler + '/rdash/**/*.' + cssCompiler // No need to compile files inside rdash/
+    ]
 };
 
 /**
@@ -104,9 +110,24 @@ gulp.task('less', function() {
         .pipe(gulp.dest('dist/css/'))    
 });
 
+/**
+* Compile scss
+*/
+gulp.task('scss', function () {
+    gulp.src(paths.styles)
+        .pipe(sass())
+        .pipe(concat('rdash.css'))
+        .pipe(gulp.dest('dist/css'));
+
+    return gulp.src('dist/css/rdash.css')
+        .pipe(minifycss())
+        .pipe(rename('rdash.min.css'))
+        .pipe(gulp.dest('dist/css/'))
+});
+
 /*
  * Copy assets and compile less.
  */
-gulp.task('build', ['fonts', 'less']);
+gulp.task('build', ['fonts', cssCompiler]);
 
 gulp.task('default', ['build', 'connect', 'livereload', 'watch']);
